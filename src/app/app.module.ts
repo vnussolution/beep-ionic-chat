@@ -18,7 +18,7 @@ import { MyApp } from './app.component';
 
 //firebase config
 export const firebaseConfig = {
-  apiKey: "AIzaSyBrJfWPg2ALAEQrIWzV5XAvhRVDMpsF7PI",
+  apiKey: "AIzaSyBrJfWPg2ALAEQrIWzV5XAvhRVDMpsF7Pa",
   authDomain: "beep-ee564.firebaseapp.com",
   databaseURL: "https://beep-ee564.firebaseio.com",
   projectId: "beep-ee564",
