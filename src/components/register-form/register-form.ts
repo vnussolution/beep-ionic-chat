@@ -1,7 +1,8 @@
-import { IAccount } from './../../models/interfaces';
+import { IAccount, IEventResponse } from './../../models/interfaces';
 import { AngularFireAuth, } from 'angularfire2/auth';
-import { Component } from '@angular/core';
-import { ToastController } from 'ionic-angular';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { ToastController, LoadingController } from 'ionic-angular';
+import { ServicesProvider } from '../../providers/services/services';
 
 /**
  * Generated class for the RegisterFormComponent component.
@@ -15,33 +16,33 @@ import { ToastController } from 'ionic-angular';
 })
 export class RegisterFormComponent {
 
+  @Output() registerEvent: EventEmitter<IEventResponse>;
   text: string;
   account = {} as IAccount;
 
-  constructor(private toastCtrl: ToastController, private afAuth: AngularFireAuth) {
+  constructor(private loadingCtrl: LoadingController, private toastCtrl: ToastController, private services: ServicesProvider) {
     console.log('Hello RegisterFormComponent Component');
     this.text = 'Hello World';
-
+    this.registerEvent = new EventEmitter<IEventResponse>();
 
   }
 
   async register() {
+    let loading = this.loadingCtrl.create({ content: 'Registering...' });
 
-    try {
-      const result = await this.afAuth.auth.createUserWithEmailAndPassword(this.account.email, this.account.password);
-      this.toastCtrl.create({
-        message: ' registered successful',
-        duration: 2000
-      }).present();
-      console.log(result);
+    loading.present();
 
-    } catch (error) {
-      console.error(error);
-      this.toastCtrl.create({
-        message: ' Error!!' + error,
-        duration: 2000
-      }).present();
-    }
+    this.services.createUser(this.account.email, this.account.password)
+      .then((result) => {
+        loading.dismiss();
+        this.registerEvent.emit(result)
+      })
+      .catch((e) => {
+        loading.dismiss();
+        this.toastCtrl.create({
+          message: e,
+          duration: 2000
+        }).present();
+      });
   }
-
 }

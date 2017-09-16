@@ -1,18 +1,24 @@
-<ion-card>
-  <ion-card-header>
-    Register Form
-  </ion-card-header>
-  <ion-card-content>
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input type="email" [(ngModel)]='account.email'></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="account.password"></ion-input>
-    </ion-item>
-    <ion-row>
-      <button ion-button color='primary' (click)="register()">Register</button>
-    </ion-row>
-  </ion-card-content>
-</ion-card>
+<form #registerForm='ngForm'>
+  <ion-card>
+    <ion-card-header>
+      Register Form
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input name="email" type="email" [(ngModel)]='account.email' #email="ngModel" required pattern="([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})"></ion-input>
+      </ion-item>
+      <ion-item class='global__input-error' *ngIf="email.invalid && email.dirty">Email is invalid</ion-item>
+      <ion-item class='global__input-error' [hidden]="!showEmailError">Email is invalid1</ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input required pattern="[a-zA-Z0-9!@#$%^&*]{6,20}$" name="password" type="password" #password="ngModel" [(ngModel)]="account.password"></ion-input>
+      </ion-item>
+      <ion-item class='global__input-error' *ngIf="password.invalid && password.dirty">Password must have at least 6</ion-item>
+
+      <ion-row>
+        <button ion-button color='primary' (click)="register()" [disabled]='registerForm.invalid'>Register</button>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</form>

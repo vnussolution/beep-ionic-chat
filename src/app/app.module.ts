@@ -16,6 +16,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { MyApp } from './app.component';
 import { firebaseConfig } from './secret.config';
+import { ServicesProvider } from '../providers/services/services';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -29,7 +31,8 @@ import { firebaseConfig } from './secret.config';
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,7 +41,8 @@ import { firebaseConfig } from './secret.config';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    ServicesProvider
   ]
 })
 export class AppModule { }

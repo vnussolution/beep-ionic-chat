@@ -1,6 +1,6 @@
-import { IUser, IMessage } from './../models/interfaces';
+import { IProfile, IMessage } from './../models/interfaces';
 
-const userList: IUser[] = [
+const userList: IProfile[] = [
     { name: 'frankie', email: 'frank@frank.com', avatar: 'http://lorempixel.com/400/200/people/1' },
     { name: 'truc', email: 'frank1@frank.com', avatar: 'http://lorempixel.com/400/200/people/2' },
     { name: 'bi', email: 'frank2@frank.com', avatar: 'http://lorempixel.com/400/200/people/3' },

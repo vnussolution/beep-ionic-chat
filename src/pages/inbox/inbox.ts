@@ -1,5 +1,6 @@
-import { MESSAGE_LIST } from './../../mocks/mocks';
-import { IMessage } from './../../models/interfaces';
+import { ServicesProvider } from './../../providers/services/services';
+import { MESSAGE_LIST, USER_LIST } from './../../mocks/mocks';
+import { IMessage, IProfile } from './../../models/interfaces';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -17,13 +18,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class InboxPage {
 
-  messageList: IMessage[] = MESSAGE_LIST;
+  userList: IProfile[] = USER_LIST;
+  filter: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private services: ServicesProvider, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InboxPage');
   }
+
+  filterUser() {
+    this.services.searchUser(this.filter).subscribe(list => {
+      this.userList = list;
+      console.log(' filtering.. ', this.filter, this.userList);
+    });
+
+  }
+
 
 }

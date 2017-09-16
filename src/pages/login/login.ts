@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IEventResponse } from '../../models/interfaces';
 
 /**
  * Generated class for the LoginPage page.
@@ -15,11 +16,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
+  response: IEventResponse;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
+
+  login(event) {
+    this.response = event;
+    console.log(' login1: ', event);
+    this.navCtrl.setRoot('TabsPage', { user: this.response, tab: 0 });
+  }
+
 
 }
