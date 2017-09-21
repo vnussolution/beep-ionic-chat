@@ -41,6 +41,7 @@ export class LoginFormComponent implements OnInit {
     this.account.password = 'frankie';
   }
 
+
   async login() {
     let loading = this.loadingCtrl.create({
       content: 'Logging in...'
@@ -50,15 +51,8 @@ export class LoginFormComponent implements OnInit {
       .then((result) => {
         loading.dismiss();
         this.eventEmitter.emit(result);
+        console.log('111 ', result);
 
-        let profile: IProfile = { name: '', email: result.email, avatar: '' };
-        this.services.updateUser(result, profile)
-          .then((result) => {
-            console.log(' update inside login form', result);
-          })
-          .catch((error) => {
-            console.log('error22: ', error);
-          })
       })
       .catch((e) => {
         loading.dismiss();

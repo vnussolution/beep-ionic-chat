@@ -2,6 +2,9 @@
 
   <ion-navbar>
     <ion-title>profile</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="logout()"><ion-icon name="log-out" ></ion-icon></button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -9,7 +12,7 @@
 
 <ion-content>
   <div class="img-container">
-    <img src="http://lorempixel.com/400/200/people/6" alt="Big Avatar">
+    <img [src]='profile.avatar' alt="Big Avatar">
   </div>
 
   <ion-card>
@@ -32,6 +35,5 @@
 
     </ion-card-content>
   </ion-card>
-
 
 </ion-content>

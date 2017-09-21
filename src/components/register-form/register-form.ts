@@ -1,4 +1,4 @@
-import { IAccount, IEventResponse } from './../../models/interfaces';
+import { IAccount, IEventResponse, IProfile } from './../../models/interfaces';
 import { AngularFireAuth, } from 'angularfire2/auth';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ToastController, LoadingController } from 'ionic-angular';
@@ -34,6 +34,14 @@ export class RegisterFormComponent {
 
     this.services.createUser(this.account.email, this.account.password)
       .then((result) => {
+        let profile: IProfile = { name: '', email: result.email, avatar: 'http://i.pravatar.cc/300?u=' + result.email };
+        this.services.updateUser(result, profile)
+          .then((result) => {
+            console.log(' update inside login form', result);
+          })
+          .catch((error) => {
+            console.log('error22: ', error);
+          })
         loading.dismiss();
         this.registerEvent.emit(result)
       })

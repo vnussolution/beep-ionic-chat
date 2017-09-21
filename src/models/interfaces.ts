@@ -20,3 +20,12 @@ export interface IEventResponse {
     result?: { email?: string, uid?: string };
     error?: { code?: string, message?: string };
 }
+
+export interface IChannel {
+    name: string;
+    $key?: string;
+}
+
+export interface IChannelMessage {
+    message: string;
+}
