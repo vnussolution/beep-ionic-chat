@@ -7,21 +7,22 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{profile?.name}}</ion-title>
+    <ion-title>{{toProfile?.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
-  <chat-message *ngFor="let chat of messageList;let index = index" [chatText]='chat' [chatIndex]='index'></chat-message>
+  <ion-list no-lines>
+    <chat-message *ngFor="let chat of messageList | async" [chatText]='chat' [userId]='fromProfile?.$key'></chat-message>
+  </ion-list>
 
 
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <send-message-box></send-message-box>
+    <send-message-box (sendText)="sendMessage($event)"></send-message-box>
   </ion-toolbar>
 </ion-footer>

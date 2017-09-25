@@ -19,6 +19,9 @@
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor="let channel of channels | async " (click)="channelChatSection(channel)">
+      <ion-avatar item-start>
+        <ion-icon name="chatboxes"></ion-icon>
+      </ion-avatar>
       {{channel.name}}
     </ion-item>
   </ion-list>

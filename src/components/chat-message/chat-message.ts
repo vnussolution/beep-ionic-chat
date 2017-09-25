@@ -13,7 +13,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ChatMessageComponent {
   @Input() chatText: IMessage;
-  @Input() chatIndex: number;
+  @Input() userId: string;
   text: string;
 
 

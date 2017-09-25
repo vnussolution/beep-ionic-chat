@@ -36,7 +36,7 @@ export class ProfilePage implements OnInit, OnDestroy {
     console.log(' init1234 : ', this.profile);
 
     this.services.getAuthenticatedProfile().subscribe(profile => {
-      this.profile = profile.val();
+      this.profile = profile;
       this.loading.dismiss();
     })
 

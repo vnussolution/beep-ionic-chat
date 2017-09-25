@@ -10,9 +10,9 @@ const userList: IProfile[] = [
 
 const messageList: IMessage[] = [];
 
-userList.forEach(user => {
-    messageList.push({ user: user, date: new Date(), message: ' message from user ' + user.name })
-})
+// userList.forEach(user => {
+//     messageList.push({ user: user, date: new Date(), message: ' message from user ' + user.name })
+// })
 
 export const MESSAGE_LIST = messageList;
 export const USER_LIST = userList;

@@ -1,18 +1,17 @@
-<ion-item *ngIf='chatIndex % 2 === 0; else right'>
-  <ion-avatar item-left>
+<ion-item *ngIf='chatText.fromUserId === userId; else from' class="chat-message-right">
+  <ion-avatar item-right>
     <img src="http://lorempixel.com/400/200/people/1">
   </ion-avatar>
-  <h2>Frank</h2>
-  <p>testing..</p>
+  <h2>{{chatText.fromProfile.name}}</h2>
+  <p>{{chatText.message}}</p>
 </ion-item>
 
-<ng-template #right>
-  <ion-item class="chat-message-right">
-    <ion-avatar item-right>
+<ng-template #from>
+  <ion-item>
+    <ion-avatar item-left>
       <img src="http://lorempixel.com/400/200/people/2">
     </ion-avatar>
-    <h2>Truc</h2>
-    <p>texting..</p>
+    <h2>{{chatText.fromProfile.name}}</h2>
+    <p>{{chatText.message}}</p>
   </ion-item>
-
 </ng-template>

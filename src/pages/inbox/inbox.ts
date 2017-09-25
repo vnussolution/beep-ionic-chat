@@ -18,7 +18,7 @@ import { IonicPage, NavController, NavParams, Loading, LoadingController } from 
 })
 export class InboxPage implements OnInit {
 
-  userList: IProfile[] = USER_LIST;
+  userList //: IProfile[] = USER_LIST;
   filter: string;
   loading: Loading;
   constructor(private loadingCtrl: LoadingController, private services: ServicesProvider, public navCtrl: NavController, public navParams: NavParams) {

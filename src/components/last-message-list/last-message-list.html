@@ -1,0 +1,11 @@
+<ion-list>
+  <ion-item-divider> Last-messages </ion-item-divider>
+
+  <ion-item *ngFor="let item of list$ | async " (click)="openChat(item)">
+    <ion-avatar item-left>
+      <ion-icon name="person"></ion-icon>
+    </ion-avatar>
+    <h2>{{item.fromProfile.name}}</h2>
+    <p>{{item.message}}</p>
+  </ion-item>
+</ion-list>

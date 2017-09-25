@@ -3,12 +3,16 @@ export interface IProfile {
     email: string;
     avatar: string;
     dob?: Date
+    $key?: string;
 }
 
 export interface IMessage {
-    user: IProfile;
     date: Date;
     message: string;
+    toUserId: string;
+    toProfile: { name: string; email: string };
+    fromUserId: string;
+    fromProfile: { name: string; email: string };
 }
 
 export interface IAccount {

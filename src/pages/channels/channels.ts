@@ -53,6 +53,8 @@ export class ChannelsPage {
   }
 
   channelChatSection(channel: IChannel) {
+
+    console.log('channelChatSection: ', channel);
     this.navCtrl.push('ChannelChatPage', { channel });
   }
 }
