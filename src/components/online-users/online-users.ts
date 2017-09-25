@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { IProfile } from './../../models/interfaces';
 import { FirebaseListObservable } from 'angularfire2/database';
 import { ServicesProvider } from './../../providers/services/services';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 /**
  * Generated class for the OnlineUsersComponent component.
@@ -15,7 +15,9 @@ import { Component, OnInit, Input } from '@angular/core';
   selector: 'online-users',
   templateUrl: 'online-users.html'
 })
-export class OnlineUsersComponent implements OnInit {
+export class OnlineUsersComponent implements OnInit, OnChanges {
+
+
 
   @Input() list: IProfile[];//: Observable<IProfile[]>;
   text: string;
@@ -28,7 +30,14 @@ export class OnlineUsersComponent implements OnInit {
 
   ngOnInit() {
     this.setUserOnline();
-    this.getOnlineUsers();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['list']) {
+      console.log('changing list..', changes['list']);
+      this.getOnlineUsers();
+
+    }
   }
 
   setUserOnline() {

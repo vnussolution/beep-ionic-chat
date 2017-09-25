@@ -1,6 +1,6 @@
 <ion-list>
   <ion-item-divider> Online User </ion-item-divider>
-  <ion-item *ngFor='let user of onlineUsers ' (click)='openChat(user)' [hidden]='userId === user.$key'>
+  <ion-item *ngFor='let user of onlineUsers |async' (click)='openChat(user)' [hidden]='userId === user.$key'>
     <ion-avatar item-left>
       <ion-icon name="person"></ion-icon>
     </ion-avatar>

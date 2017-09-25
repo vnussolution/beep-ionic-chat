@@ -27,11 +27,11 @@ export class InboxPage implements OnInit {
   }
 
   ngOnInit() {
-    this.loading.present();
-    this.services.searchUser('').subscribe(list => {
-      this.userList = list;
-      this.loading.dismiss();
-    });
+    //this.loading.present();
+    // this.services.searchUser('').subscribe(list => {
+    //   this.userList = list;
+    //   this.loading.dismiss();
+    // });
     console.log('count 1');
   }
 

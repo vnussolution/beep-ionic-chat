@@ -54,11 +54,11 @@ export class ServicesProvider {
   }
 
   searchUser(name: string) {
-    const query = this.db.list(`online-users`, {
-      query: { orderByChild: 'name', equalTo: name }
+    return this.db.list(`online-users`, {
+      query: { orderByChild: 'name' }
     });
 
-    return query.take(1).map(list => list.filter(item => item.name.indexOf(name) !== -1));
+    // return query; //.take(1).map(list => list.filter(item => item.name.indexOf(name) !== -1));
   }
 
   logout() {
